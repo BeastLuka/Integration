@@ -1,7 +1,6 @@
 pipeline{
-    agent{
-        none   //label "node"
-    }
+    agent any
+    
     stages{
         stage("checkout"){
             steps{
