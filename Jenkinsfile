@@ -1,10 +1,10 @@
 pipeline{
     agent any
-    
+
     stages{
         stage("checkout"){
             steps{
-                echo "========executing checkout========"
+                sh "echo checkout successful"
             }
             post{
                 always{
@@ -16,6 +16,12 @@ pipeline{
                 failure{
                     echo "========A execution failed========"
                 }
+            }
+        }
+        stage("build"){
+            steps{
+                sh "ls -ltr"
+                sh "cd Integration && docker build . -t integration"
             }
         }
     }
