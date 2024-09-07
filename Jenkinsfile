@@ -21,7 +21,7 @@ pipeline{
         stage("build"){
             steps{
                 sh "ls -ltr"
-                sh "cd Integration && docker build . -t integration"
+                sh "docker build . -t integration"
             }
         }
     }
