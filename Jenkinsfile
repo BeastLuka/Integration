@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        Any    //label "node"
+        none   //label "node"
     }
     stages{
         stage("checkout"){
