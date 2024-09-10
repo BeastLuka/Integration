@@ -1,10 +1,14 @@
 pipeline{
-    agent any
-    
+    agent{
+        docker {
+            image 'beastapple/base-images:v1.0'
+            args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+        }   
+    }
     stages{
         stage("checkout"){
             steps{
-                echo "========executing checkout========"
+                sh "echo checkout successful"
             }
             post{
                 always{
@@ -16,6 +20,12 @@ pipeline{
                 failure{
                     echo "========A execution failed========"
                 }
+            }
+        }
+        stage("build"){
+            steps{
+                sh "ls -ltr"
+                sh "docker build . -t integration"
             }
         }
     }
@@ -31,3 +41,8 @@ pipeline{
         }
     }
 }
+
+
+
+
+
