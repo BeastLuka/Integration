@@ -1,7 +1,7 @@
 pipeline{
     agent{
         docker {
-            image 'golang:1.23'
+            image 'beastapple/base-images:v1.0'
             args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
         }   
     }
